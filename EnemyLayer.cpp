@@ -12,7 +12,7 @@ bool EnemyLayer::init() {
 	}
 	cocos2d::Vector<SpriteFrame*> vecTemp;
 	vecTemp.clear();
-
+gffhgfhjgkjhlkjl'kjlk;jl; 
 	char buff[16];
 	Animation* pAnimation1 = Animation::create();
 	pAnimation1->setDelayPerUnit(0.1f);
