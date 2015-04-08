@@ -7,13 +7,13 @@
 @brief    The cocos2d Application.
 
 The reason for implement as private inheritance is to hide some interface call by Director.
-*/
+*/fdssssssssssssssssssss
 class  AppDelegate : private cocos2d::Application
 {
 public:
     AppDelegate();
     virtual ~AppDelegate();
-
+fdssdf额我反而更热的过
     /**
     @brief    Implement Director and Scene init code here.
     @return true    Initialize success, app continue.
