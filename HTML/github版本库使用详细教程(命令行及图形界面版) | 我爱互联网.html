@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<title>github版本库使用详细教程(命令行及图形界面版) | 我爱互联网</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- 微博Like按钮 -->
+<!--必填-->
+<meta property="og:type" content="webpage" />
+<meta property="og:url" content="http://www.woiweb.net/github-gitshell-tutorial.html" />
+<meta property="og:title" content="github版本库使用详细教程(命令行及图形界面版)" />
+<meta property="og:description" content="" />
+<!--选填-->
+<meta property="og:image" content="http://woiwebnet-wordpress.stor.sinaapp.com/uploads/2013/07/github.png" /><!-- 微博Like按钮 -->
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/blueillusion/style.css" />
+<link rel="alternate" type="application/rss+xml" title="我爱互联网 RSS Feed" href="http://www.woiweb.net/feed" />
+<link rel="alternate" type="application/atom+xml" title="我爱互联网 Atom Feed" href="http://www.woiweb.net/feed/atom" />
+<link rel="pingback" href="/xmlrpc.php" />
+<link rel="shortcut icon" href="/wp-content/themes/blueillusion/images/favicon.ico" type="image/x-icon" />
+<script src="/wp-content/themes/blueillusion/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/wp-content/themes/blueillusion/js/jquery.lazyload.mini.js" type="text/javascript"></script>
+<script src="/wp-content/themes/blueillusion/js/gototop.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+   $("#content img").lazyload({   
+      placeholder : "/wp-content/themes/blueillusion/images/grey.gif", 
+      effect: "fadeIn"
+   });
+});
+</script>
+
+<!--[if IE 6]>
+	<script src="/wp-content/themes/blueillusion/js/pngfix.js"></script>
+	<script>
+	  DD_belatedPNG.fix('.icon, #totop, background');
+	</script>
+<![endif]--> 
+<link rel="alternate" type="application/rss+xml" title="我爱互联网 &raquo; github版本库使用详细教程(命令行及图形界面版) 评论 Feed" href="http://www.woiweb.net/github-gitshell-tutorial.html/feed" />
+<link rel='stylesheet' id='wp-recentcomments-css'  href='/wp-content/plugins/wp-recentcomments/css/wp-recentcomments.css?ver=2.2.7' type='text/css' media='screen' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='向数字时钟添加闹铃' href='http://www.woiweb.net/add-alarms-to-digital-clock.html' />
+<link rel='next' title='PhantomJS快速入门教程' href='http://www.woiweb.net/phantomjs-quick-use-tutorials.html' />
+<meta name="generator" content="WordPress 3.4.1" />
+<link rel='shortlink' href='http://www.woiweb.net/?p=2202' />
+
+<!-- All in One SEO Pack 2.0 by Michael Torbert of Semper Fi Web Design[209,298] -->
+<meta name="keywords" content="git,github,gitshell,教程，版本控制" />
+
+<link rel="canonical" href="http://www.woiweb.net/github-gitshell-tutorial.html" />
+<!-- /all in one seo pack -->
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+<body>
+	  <a name="top"></a>
+	  <!-- head -->
+	  <div id="header" class="header">
+		  <div class="wrp" >
+	    	<a href="/"></a>
+		    <div class="nav">
+		        <ul id="nav">
+		        	<li ><a href="http://www.woiweb.net">首页</a><b></b></li>
+		        	<li ><a href="http://www.woiweb.net/category/view" title="查看 前端观察 中的全部文章" >前端观察</a><b></b></li><li ><a href="http://www.woiweb.net/category/jquery" title="查看 JQuery 中的全部文章" >JQuery</a><b></b></li><li ><a href="http://www.woiweb.net/category/design" title="查看 设计灵感 中的全部文章" >设计灵感</a><b></b></li><li ><a href="http://www.woiweb.net/category/development" title="查看 开发经验 中的全部文章" >开发经验</a><b></b></li><li ><a href="http://www.woiweb.net/category/tools" title="查看 前端工具 中的全部文章" >前端工具</a><b></b></li><li ><a href="http://www.woiweb.net/category/resource" title="查看 免费资源 中的全部文章" >免费资源</a><b></b></li><li ><a href="http://www.woiweb.net/category/html_css" title="查看 Html &amp; Css 中的全部文章" >Html &amp; Css</a><b></b></li>				</ul>
+		    </div>
+	    	<div class="search">
+				<form role="search" method="get" id="searchform" action="http://www.woiweb.net/" >
+	<div><label class="screen-reader-text" for="s">搜索：</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="搜索" />
+	</div>
+	</form> 
+			</div>
+		</div>
+	  </div>
+	  <div class="wrap" >
+	  	  <!-- banner -->
+		  <div class="banner">
+			<div id="logo" class="logo">
+										<a href="http://www.woiweb.net"><img src="http://www.woiweb.net/wp-content/themes/blueillusion/images/logo.png" alt="我爱互联网" title="我爱互联网" class="logoimg" /></a>
+									</div>
+			<div class="headad">
+				<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1947244863247241";
+/* 728x90, javaeye 创建于 10-9-27 */
+google_ad_slot = "9239992913";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>			</div>
+		  </div>
+		  <div class="headbar">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1947244863247241";
+/* ad-txt */
+google_ad_slot = "6318974393";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+	  </div>	<!-- content -->
+	<div class="content">
+		<div class="box">
+				
+						<div class="post" id="post-2202">
+				
+				<h2 class="title"><a href="http://www.woiweb.net/github-gitshell-tutorial.html" rel="bookmark" title="Permanent Link to github版本库使用详细教程(命令行及图形界面版)">github版本库使用详细教程(命令行及图形界面版)</a></h2>
+				<div class="postdate">
+					<p>posted by <a href="http://www.woiweb.net/author/admin" title="由 疯狂小强 发布" rel="author">疯狂小强</a> at 七月 25, 2013 所属分类 <a href="http://www.woiweb.net/category/view" title="查看 前端观察 中的全部文章" rel="category tag">前端观察</a>, <a href="http://www.woiweb.net/category/development" title="查看 开发经验 中的全部文章" rel="category tag">开发经验</a>&nbsp;42,338次阅读&nbsp;<a href="http://www.woiweb.net/github-gitshell-tutorial.html#comments" title="《github版本库使用详细教程(命令行及图形界面版)》上的评论">5篇评论&raquo;</a>&nbsp;</p>
+					<p class="tags">标签：<span><a href="http://www.woiweb.net/tag/git" rel="tag">git</a></span><span><a href="http://www.woiweb.net/tag/github" rel="tag">github</a></span><span><a href="http://www.woiweb.net/tag/gitshell" rel="tag">gitshell</a></span></p>
+				</div>
+				<div class="entry">
+					<div style=display:inline-block><!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_qzone">QQ空间</a>
+	<a class="jiathis_button_tsina">新浪微博</a>
+	<a class="jiathis_button_tqq">腾讯微博</a>
+	<a class="jiathis_button_weixin">微信</a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1427176911056771" charset="utf-8"></script>
+<!-- JiaThis Button END --></div><!-- AdSense Now! V1.92 -->
+<!-- Post[count: 1] -->
+<div class="adsense adsense-leadin" style="float:left;margin: 12px;"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-1947244863247241";
+/* 300x250, adsence 10-7-7 */
+google_ad_slot = "5401857587";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><div id="article_content">
+<div>
+<p><a target="_blank" href="http://git-scm.com/"><strong>Git</strong></a>是一个分布式的版本控制系统，作为开源代码库以及版本控制系统，<a href="https://github.com"><strong><a target="_blank" title="Github" href="http://www.woiweb.net/tag/github">Github</a></strong></a>目前拥有140多万开发者用户。随着越来越多的应用程序转移到了云上，<a href="https://github.com/woiweb/jquery-panorama"><strong>Github</strong></a>已经成为了管理软件开发以及发现已有代码的首选方法。<span id="more-2202"></span></p>
+<blockquote><p><strong>Git</strong>是一个分布式的版本控制系统，最初由Linus Torvalds编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。目前，包括 Rubinius和Merb在内的很多知名项目都使用了Git。Git同样可以被诸如Capistrano和Vlad the Deployer这样的部署工具所使用。</p>
+<div>如前所述，作为一个分布式的版本控制系统，在Git中并不存在主库这样的概念，每一份<a href="http://baike.baidu.com/view/548940.htm" target="_blank">复制</a>出的库都可以独立使用，任何两个库之间的不一致之处都可以进行合并。</div>
+<div><strong>GitHub</strong>可以托管各种<a href="http://baike.baidu.com/view/1531489.htm" target="_blank">git</a>库，并提供一个web界面，但与其它像 <a href="http://baike.baidu.com/view/1091461.htm" target="_blank">SourceForge</a>或<a href="http://baike.baidu.com/view/2252816.htm" target="_blank">Google Code</a>这 样的服务不同，<strong>GitHub</strong>的独特卖点在于从另外一个项目进行分支的简易性。为一个项目贡献代码非常简单：首先点击项目站点的“fork”的按钮，然后将 代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。已经有人将GitHub称为代码玩家的MySpace。</div>
+<div><a href="http://baike.baidu.com/view/3366456.htm" target="_blank">百度百科：http://baike.baidu.com/view/3366456.htm</a></div>
+</blockquote>
+<p>今天我们就来学习github的使用，我们将用它来管理我们的代码，你会发现它的好处的，当然是要在本系列<strong>教程</strong>全部完成之后，所以请紧跟站长的步伐，今天是第一天，我们来学习如何在git上建立自己的版本仓库，并将代码上传到仓库中。</p>
+<h3><strong>教程【一】</strong></h3>
+<p>一、注册一个免费git帐号，可以无限建立访问权限为公共的版本仓库，注册地址：<a target="_blank" title="注册git帐号" href="https://github.com/signup/free" target="_blank">https://github.com/signup/free</a></p>
+<p>二、依次填写，用户名【昵称】、邮箱地址【用来登录】、密码，点击“creat an account”进行注册</p>
+<p>三、点击右上方的”sign in”使用注册邮箱登录到git</p>
+<p>四、点击右上方，你的用户名之后的图标，新建一个版本仓库</p>
+<p>五、在“Repository name”一栏里填写版本仓库的名称，我们假设为”test”,Description栏是描述，可填可不填。</p>
+<p>默认访问权限为公共，我们点击”Creating Repository”按钮，创建我们的第一个版本仓库。</p>
+<p>接下来，我们需要在本地安装<strong>git客户端</strong>。</p>
+<p>六、以<a title="windows" href="http://www.woiweb.net/tag/windows">windows</a>为例，下载客户端：<a href="http://github-windows.s3.amazonaws.com/GitHubSetup.exe" target="_blank">http://github-windows.s3.amazonaws.com/GitHubSetup.exe</a>，安装完成后，会在桌面上出现两个图标，Git Shell和GitHub。</p>
+<p>七、那两个图标分别是命令行工具和图形界面，我们先来学习使用shell。</p>
+<p>八、双击打开Git Shell,【win7用户使用管理员权限打开】</p>
+<p>九、输入<code>git config --global user.name "d1php"</code>,这里的d1php是站长注册的用户名，你得改成你自己的</p>
+<p>十、输入<code>git config --global user.email "studyphp@yahoo.cn"</code>,这里的邮箱也是是站长注册的邮箱，你得改成你自己的</p>
+<p>十一、上面两步在客户端配置你的git帐户，下面我们在本地建立自己的版本仓库，站长把版本仓库建立在D盘。输入<code>cd d:</code>，切换到D盘目录。</p>
+<p>十二、输入<code>mkdir test</code>，建立一个test目录，<strong><span style="color: #ff0000;">注意本地仓库名要和git中建立的仓库名一样</span></strong></p>
+<p>十三、输入<code>cd test</code>，进入test目录</p>
+<p>十四、输入<code>git init</code>,初始化版本仓库</p>
+<p>十五、输入<code>touch README</code>,建立一个README文件</p>
+<p>十六、用文本编辑器打开README文件，随便输入一点文件，比如：this is a test!</p>
+<p>十七、输入<code>git add README</code>,将文件添加到上传队列</p>
+<p>十八、输入<code>git commit -m 'test commit'</code>，缓存提交，引号中的是对本次提交的描述，必须填写，不能为空</p>
+<p>十九、输入<code>git remote add origin https://github.com/<em>d1php</em>/test.git</code>,注意url格式，d1php是你注册时的昵称，test是你刚才建立的版本仓库</p>
+<p>二十、输入<code>git push origin master</code>，将README文件上传到版本库。这一步会一次让你填写你的git注册邮箱和密码，注意不要填错了</p>
+<p>好了，到这一步，我们就完成了在线上和线下建立git版本库并上传文件的全部步骤。下节课我们来学习GitHub的使用，图形界面大家肯定更容易接受。</p>
+</div>
+<h3><strong>教程【二】</strong></h3>
+<div>
+<p>上一节课我们学习了<a title="github使用教程【一】" href="http://www.phptogether.com/archives/12762" target="_blank">git shell的初步使用</a>，今天我们来学习github的图形界面。</p>
+<p>一、双击桌面上的GitHub图标</p>
+<p>二、在打开的界面中，点击Log In,图下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/11.png"><img title="登录github" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874746_2037.png" width="574" height="138" /></a></p>
+<p>三、在界面中输入用户名和密码，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/21.png"><img title="2" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874791_8711.png" width="515" height="425" /></a></p>
+<p>四、点击LOG IN，进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/3.png"><img title="3" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874809_3152.png" width="515" height="518" /></a></p>
+<p>五、点击’continue’，进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/4.png"><img title="4" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874834_8806.png" width="478" height="640" /></a></p>
+<p>六、提示我们没有找到本地版本仓库，这是因为git客户端默认是在C盘的git目录中查找版本库，而我们在上节课中建立的版本仓库在D盘，所以才找不到，没关系我们自己来查找，点击SKIP,进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/5.png"><img title="5" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874861_3711.png" width="540" height="201" /></a></p>
+<p>七、点击’tools’,在下拉菜单中选择’options’，进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/6.png"><img title="6" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874885_1616.png" width="655" height="307" /></a></p>
+<p>八、定位到D盘目录，然后点击SCAN FOR REPOSITORIE，扫描本地仓库,如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/7.png"><img title="7" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874905_8912.png" width="460" height="86" /></a></p>
+<p>九、很快就找到了我们上节课建立的版本仓库，test，点击左下方的add，再点击update,进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/8.png"><img title="8" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874921_7658.png" width="548" height="121" /></a></p>
+<p>十、进入D:/test目录，新建一个名为hello的txt文件，在其中输入hello world!,然后点击上图中的箭头打开版本库，进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/9.png"><img title="9" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874945_7460.png" width="717" height="243" /></a></p>
+<p>十一、左边栏会列出最新有改动的文件，右边第一栏填写对本次提交的描述，我们填’hello world’;第二栏是详细描述，可以不填。填完后点击’commit’提交,进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/10.png"><img title="10" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874966_6364.png" width="717" height="193" /></a></p>
+<p>十二、在右边我们可以看见刚才新建的提交:hello world,点击publish，将我们的改动上传到线上的git仓库中。</p>
+<p>十三、稍等片刻，即可完成上传，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/111.png"><img title="11" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366874992_6872.png" width="717" height="135" /></a></p>
+<p>上传成功后，我们可以在左边看见刚才完成的提交。然后我们访问线上的仓库，检查一下：<a target="_blank" href="https://github.com/d1php/test" target="_blank">https://github.com/d1php/test</a></p>
+<p>是的，线上的test仓库又多了2个文件。</p>
+<p>好了，到这里我们就已经使用GitHub图形界面完成了一次文件上传，下节课我们将回到<a title="gitshell" href="http://www.woiweb.net/tag/gitshell">gitshell</a>的学习。我们将使用gitshell下载线上的版本仓库到本地，如果对本教程有疑惑可以联系站长哦。</p>
+</div>
+<h3><strong>教程【三】</strong></h3>
+<div>
+<p>今天我们来学习如何使用gitshell将线上的版本仓库下载到本地。我们为什么要把线上的仓库下载到本地，通常情况下是我们想要参与别人的项目。</p>
+<p>github上面有一个项目：<a target="_blank" href="https://github.com/octocat/Spoon-Knife" target="_blank">https://github.com/octocat/Spoon-Knife</a>，点击访问它。</p>
+<p>现在我们想要参与这个项目，需要进行以下步骤：</p>
+<p>一、访问上面的链接，点击fork按钮，</p>
+<p>二、现在spoon-knife项目已经添加到你的线上版本仓库中了，我们要下载它。打开gitshell，输入<code>https://github.com/d1php/Spoon-Knife.git</code>，注意这里的d1php应该是你注册时的昵称，在此使用了站长的帐号。</p>
+<p>三、前两节我们把版本仓库建立在了D盘根目录，因此这里默认是在D盘目录只想的shell，进入D盘，会发现多了一个spoon-knife目录，线上的源码已经下载下来了。</p>
+<p>四、输入<code>cd spoon-knife</code></p>
+<!-- AdSense Now! V1.92 -->
+<!-- Post[count: 2] -->
+<div class="adsense adsense-midtext" style="text-align:center;margin: 12px;"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-1947244863247241";
+/* 300x250, adsence 10-7-7 */
+google_ad_slot = "5401857587";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><p>五、输入<code>git remote add upstream https://github.com/octocat/Spoon-Knife.git</code>，这里我们使用的是原项目的地址，确保我们可以随时跟踪到原项目</p>
+<p>六、输入<code>git fetch upstream</code>，获取原项目最新的与你本地版本库不同的修改，但是不修改你的本地文件</p>
+<p>好了，如何将线上仓库下载到本地就学习到这里，下节课我们学习如何建立版本分支。</p>
+</div>
+<h3><strong>教程【四】</strong></h3>
+<div>
+<p>学习，贵在持之以恒！欢迎大家跟站长继续学习github的使用，今天我们将学习如何使用 gitshell建立版本分支。如果你想要在原项目的基础上尝试一些新的思路或者开发新功能、修改等等，你可以建立原项目的一个分支，这样当进行修改时原 来的代码是不会受到影响的。我们前几节课建立一个test版本库，今天我们来为它建立 一个分支。</p>
+<p>一、打开gitshell，输入 <code>cd test</code>，进入本地的test版本库</p>
+<p>二、输入<code>git branch testbranch</code></p>
+<p>三、输入<code>git checkout testbranch</code>，将testbranch分支设置为当前工作分支</p>
+<p>四、输入<code>git add ./</code>，将test目录的所有文件添加至上传队列</p>
+<p>五、输入<code>git commit -m 'newbranch'</code>，缓存提交</p>
+<p>六、输入<code>git remote add origin https://github.com/d1php/test.git</code>，配置上传目标仓库</p>
+<p>七、输入<code>git push -u origin testbranch</code>，将文件上传到分支</p>
+<p>然后访问：<a target="_blank" href="https://github.com/d1php/test/branches" target="_blank">https://github.com/d1php/test/branches</a>，会发现多出了一个分支testbranch！</p>
+<p>怎么样，今天的学习很轻松吧。明天我们将学习如何使用github图像界面将线上仓库中有改动的文件下载到本地，或者称之为“版本同步”。</p>
+</div>
+<h3><strong>教程【五】</strong></h3>
+<div>
+<p>今天我们学习如何使用github图形界面来让我们本地的版本仓库和线上的仓库保持一致，或者说如何把线上仓库中有改动的文件下载到本地。</p>
+<p>一、首先，我们访问<a target="_blank" href="https://github.com/d1php/test" target="_blank">https://github.com/d1php/test</a>。还记得我们在第一节课建立的hello.txt文件吗？如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/12.png"><img title="1" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875468_5510.png" width="557" height="124" /></a></p>
+<p>二、双击该文件，来到下图所示的界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/22.png"><img title="2" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875486_5885.png" width="569" height="143" /></a></p>
+<p>三、点击edit按钮，并对文本进行一些修改，如下图所示:</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/31.png"><img title="3" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875499_5999.png" width="561" height="178" /></a></p>
+<p>四、编辑完之后，点击页面最下方的commit changes按钮：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/41.png"><img title="4" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875517_7321.png" width="563" height="99" /></a></p>
+<p>五、打开github,如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/51.png"><img title="5" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875533_1443.png" width="540" height="115" /></a></p>
+<p>六、点击右边的箭头，打开本地仓库，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/61.png"><img title="6" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875547_2838.png" width="591" height="256" /></a></p>
+<p>七、github会自动读出最新的修改，并且上端会出现一个蓝色sync【sync是同步的意思】按钮。如果你没有看见蓝色的图标，可以点击F5刷新界面。现在我们点击sync按钮，这样github会将线上有改动的文件下载到本地，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/71.png"><img title="7" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875563_1779.png" width="598" height="88" /></a></p>
+<p>下载玩之后，蓝色的sync会变成灰色的in sync，这说明最新的文件已经下载到本地的仓库了，去检查一下吧！怎么样，没错吧。</p>
+<p>感谢大家跟着站长进行了5天的学习，明天我们将继续学习github图形界面的使用，我们将学习如何使用github图形界面来建立一个版本库的分支。</p>
+</div>
+<h3><strong>教程【六】</strong></h3>
+<div>
+<p>学习，有时候就是一个漫长而枯燥的过程，但是当你走到终点时，回过头来再看看这段路，则会露出满不在乎的表情！今天我们学习如何使用gitgui来建立版本分支。</p>
+<p>一、打开github图形界面,点击蓝色箭头打开我们之前建立的test仓库，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/13.png"><img title="1" alt="" src="http://www.phptogether.com/wp-content/uploads/2012/07/13.png" width="617" height="131" /></a></p>
+<p>二、在打开的界面中，点击master按钮，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/23.png"><img title="2" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875692_2324.png" width="600" height="258" /></a></p>
+<p>三、在弹出的窗口中，点击manage按钮，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/32.png"><img title="3" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875708_6528.png" width="345" height="219" /></a></p>
+<p>四、进入分支界面，把鼠标移动到master分支上，并点击加号，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/42.png"><img title="4" alt="" src="http://www.phptogether.com/wp-content/uploads/2012/07/42.png" width="694" height="47" /></a></p>
+<p>这会以master分支的文件为蓝本建立一个新的分支。</p>
+<p>五、点击加号后，会弹出输入框，输入新分支的名称，并点击BRANCH按钮创建分支，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/52.png"><img title="5" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875736_3693.png" width="621" height="85" /></a></p>
+<p>站长输入是testbranch2，因为之前用gitshell建立一个testbranch分支。</p>
+<p>六、创建完之后，会在当前页面显示新分支，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/62.png"><img title="6" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875750_8336.png" width="618" height="81" /></a></p>
+<p>点击publish按钮，将新分支发布到线上的git仓库中。发布完之后，publish按钮会变成unpublish，说明分支已经上传到线上的仓库中了。</p>
+<p>七、访问<a target="_blank" href="https://github.com/d1php/test/branches" target="_blank">https://github.com/d1php/test/branches</a>，查看分支情况，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/72.png"><img title="7" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875765_4872.png" width="533" height="246" /></a></p>
+<p>我们会发现，尽管显示有3个分支，但是在页面上只呈现了2个，新建立的没有出现，这是因为默认是读取master分支以及没有与master整合的 分支，而我们刚才创建的testbranch2分支是以master为蓝本，因此它们之间没有任何不同，所以才没有显示。我们点击branch下拉按钮， 可以看见我们刚才建立的testbranch2分支。</p>
+<p>八、点击上图中的testbranch2按钮，进入下图所示界面：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/81.png"><img title="8" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875796_5873.png" width="557" height="129" /></a></p>
+<p>现在，我们可以在线上的版本仓库中看见我们刚才建立的分支了。</p>
+<p>九、现在我们回到第六步的github图形界面，把鼠标移动到新建分支testbranch2上面，如下图所示：</p>
+<p><a href="http://www.phptogether.com/wp-content/uploads/2012/07/91.png"><img title="9" alt="" src="http://img.my.csdn.net/uploads/201304/25/1366875811_4264.png" width="607" height="43" /></a></p>
+<p>上图中第一个红圈包围的图标是用来删除分支的，它将同时删除本地和线上仓库的分支；第二个红圈仅仅删除线上仓库中的分支，本地分支会被保留。现在我们，点击第一个红圈包围的图标，将本地分支和线上分支同时删除。</p>
+<p>十、访问<a target="_blank" title="查看分支" href="https://github.com/d1php/test/branches" target="_blank">https://github.com/d1php/test/branches</a>，我们会发现刚才建立的testbranch2分支已经被删除了，gitgui中也不再显示该分支了。</p>
+<p>ok，到此我们就学会了如何使用github图形界面创建、发布、删除分支，下节课我们将学习如何使用github图形界面对分支版本进行操作。</p>
+</div>
+<div>引用自：</div>
+<div>http://blog.csdn.net/ydcun/article/details/8849726</div>
+<div>http://www.phptogether.com/archives/12762</p>
+<p>http://www.phptogether.com/archives/12767</p>
+<p>http://www.phptogether.com/archives/12787</p>
+<p>http://www.phptogether.com/archives/12793</p>
+<p>http://www.phptogether.com/archives/12800</p>
+<p>http://www.phptogether.com/archives/12814</p></div>
+</div>
+<div class="graybox">
+    <wb:like>Like一下吧</wb:like>
+</div>
+<div class="wumii-hook">
+    <input type="hidden" name="wurl" value="http://www.woiweb.net/github-gitshell-tutorial.html" /><br />
+    <input type="hidden" name="wtitle" value="github版本库使用详细教程(命令行及图形界面版)" /><br />
+    <input type="hidden" name="wpic" value="http://woiwebnet-wordpress.stor.sinaapp.com/uploads/2013/07/github.png" />
+</div>
+<span id="ujian-slide-pos"></span>
+ 
+		<script type="text/javascript">
+		var ujian_config = {
+			'num':5,
+			'showType':2,
+			'bgColor':"",
+			'mouseoverColor':"#E6F3DE",
+			'textColor':"#333333",
+			'hoverTextColor':"#333333",
+			'borderColor':"#dddddd",
+			'picSize':96,
+			'target':1,
+			'textHeight':60,
+			'defaultPic':"",
+			'itemTitle':"您可能喜欢："
+		}</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script><p  class="related_post_title">您可能还会喜欢</p><ul class="related_post"><li><a href="http://www.woiweb.net/git-tutorials-beginners.html" title="10篇写给Git初学者的最佳教程">10篇写给Git初学者的最佳教程</a></li></ul>				</div>
+				<div class="graybox">
+					<p>欢迎转载，转载请注明来源于<a href="http://www.woiweb.net"><strong>我爱互联网</strong></a>，多谢合作！</p>
+					<p>本文永久链接地址: <a href="http://www.woiweb.net/github-gitshell-tutorial.html" rel="bookmark">http://www.woiweb.net/github-gitshell-tutorial.html</a></p>
+				</div>
+
+				<div class="graybox clearfix">
+					<div class="alignleft">上一篇: <a href="http://www.woiweb.net/phantomjs-quick-use-tutorials.html" rel="next">PhantomJS快速入门教程</a></div>
+					<div class="alignright">下一篇: <a href="http://www.woiweb.net/add-alarms-to-digital-clock.html" rel="prev">向数字时钟添加闹铃</a></div>
+				</div>
+				
+				<div class="graybox clearfix">
+									<a href="#respond">我要发表评论</a><!--, or <a href="http://www.woiweb.net/github-gitshell-tutorial.html/trackback" rel="trackback">trackback</a> from your own site.-->
+
+								</div>
+				
+			</div><!--/post-2202-->
+		
+<!-- You can start editing here. -->
+
+	<h3 id="comments">5条评论</h3>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-22674">
+				<div id="div-comment-22674" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/155ca0be0615416c853e41ac1aba7f02?s=32&amp;d=identicon&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.122sc.com' rel='external nofollow' class='url'>围挡</a></cite> <span class="says">说道：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.woiweb.net/github-gitshell-tutorial.html/comment-page-1#comment-22674">
+			2013年08月19日 3:17 下午</a>		</div>
+
+		<p>这个值得收藏，谢谢博主分享。</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/github-gitshell-tutorial.html?replytocom=22674#respond' onclick='return addComment.moveForm("div-comment-22674", "22674", "respond", "2202")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22668">
+				<div id="div-comment-22668" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/8c6c7217aff00210133d1abca3eb8b9d?s=32&amp;d=identicon&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.muliba.net' rel='external nofollow' class='url'>木篱笆</a></cite> <span class="says">说道：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.woiweb.net/github-gitshell-tutorial.html/comment-page-1#comment-22668">
+			2013年08月14日 2:57 上午</a>		</div>
+
+		<p>这个还是蛮好用的</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/github-gitshell-tutorial.html?replytocom=22668#respond' onclick='return addComment.moveForm("div-comment-22668", "22668", "respond", "2202")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-22667">
+				<div id="div-comment-22667" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/4f1b95ae72271dac5e694f4994faa923?s=32&amp;d=identicon&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://v7v3.com/' rel='external nofollow' class='url'>小V</a></cite> <span class="says">说道：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.woiweb.net/github-gitshell-tutorial.html/comment-page-1#comment-22667">
+			2013年07月30日 2:33 下午</a>		</div>
+
+		<p>这个号，收藏了</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/github-gitshell-tutorial.html?replytocom=22667#respond' onclick='return addComment.moveForm("div-comment-22667", "22667", "respond", "2202")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22665">
+				<div id="div-comment-22665" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/7fad0822fa6c413aae26c93a6e9b0a0d?s=32&amp;d=identicon&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.qqmofasi.com' rel='external nofollow' class='url'>QQ魔法师</a></cite> <span class="says">说道：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.woiweb.net/github-gitshell-tutorial.html/comment-page-1#comment-22665">
+			2013年07月27日 6:34 上午</a>		</div>
+
+		<p>只有英文版的吗？？？</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/github-gitshell-tutorial.html?replytocom=22665#respond' onclick='return addComment.moveForm("div-comment-22665", "22665", "respond", "2202")'>回复</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-22659">
+				<div id="div-comment-22659" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/d581e6d90a9761e29b618352363ef039?s=32&amp;d=identicon&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn"><a href='http://www.aips.me' rel='external nofollow' class='url'>周良</a></cite> <span class="says">说道：</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.woiweb.net/github-gitshell-tutorial.html/comment-page-1#comment-22659">
+			2013年07月25日 11:43 上午</a>		</div>
+
+		<p>你好，请问可否把周良博客（www.aips.me）的链接关键词修改为 WordPress ？多谢了~</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/github-gitshell-tutorial.html?replytocom=22659#respond' onclick='return addComment.moveForm("div-comment-22659", "22659", "respond", "2202")'>回复</a>		</div>
+				</div>
+		</li>
+	</ol>
+
+ 
+
+
+<div id="respond">
+
+<h3>发表评论</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="/github-gitshell-tutorial.html#respond" style="display:none;">点击这里取消回复。</a></small>
+</div>
+
+
+<form action="/wp-comments-post.php" method="post" id="commentform">
+
+
+<p>
+<input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' />
+<label for="author"><small>姓名 (必填)</small></label>
+</p>
+
+<p>
+<input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' />
+<label for="email"><small>Mail (不会被公开) (必填)</small></label>
+</p>
+
+<p>
+<input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>网站</small></label>
+</p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+<p>
+<label for="mcspvalue"><small> 3 + 4 = </small></label> 
+<input id="mcspvalue" name="mcspvalue" type="text" value="" size="22" aria-required="true" />
+<input type="hidden" name="mcspinfo" value="92334" />
+</p><p><input name="submit" type="submit" id="submit" tabindex="5" value=" 提交评论 (Ctrl+Enter) " />
+<input type='hidden' name='comment_post_ID' value='2202' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a9d0e2d04e" /></p>
+</form>
+
+</div>
+
+<script type="text/javascript">
+document.getElementById("comment") && (document.getElementById("comment").onkeydown = function (moz_ev){var ev = null;if (window.event){ev = window.event;}else{ev = moz_ev;}if (ev != null && ev.ctrlKey && ev.keyCode == 13){document.getElementById("submit").click();}})
+</script>		
+						</div>
+		<div class="sidebarBG">
+			﻿<div class="sidebar">
+		<div class="wbfollow"><wb:follow-button uid="1052981072" type="red_4" width="100%" height="64" ></wb:follow-button></div>
+	<div class="sidebaradbox clearfix" >    	
+		<a target="_blank" id="rssbox" href="http://feeds.feedburner.com/woiweb" title="订阅我的RSS"  >
+        	<span class="icon"></span>
+            <span class="title">RSS订阅</span>
+            <span class="count">RSS</span>
+        </a>
+        <a target="_blank" id="weibobox" href="http://weibo.com/woiwebnet" title="关注我的微博" >
+        	<span class="icon"></span>
+            <span class="title">关注我的微博</span>
+            <span class="count">Weibo</span>
+        </a>
+    </div>
+    <div class="line"></div>
+        
+    	
+		
+		
+	<ul>
+			<div class="sidebox">
+			<h2 class="title">近期文章</h2>
+			<ul>	<li><a href='http://www.woiweb.net/react-tutorial.html' title='React 入门实例教程'>React 入门实例教程</a></li>
+	<li><a href='http://www.woiweb.net/linux-nodejs-install.html' title='Linux下安装Nodejs'>Linux下安装Nodejs</a></li>
+	<li><a href='http://www.woiweb.net/grunt.html' title='Grunt入门教程'>Grunt入门教程</a></li>
+	<li><a href='http://www.woiweb.net/phantomjs-quick-use-tutorials.html' title='PhantomJS快速入门教程'>PhantomJS快速入门教程</a></li>
+	<li><a href='http://www.woiweb.net/github-gitshell-tutorial.html' title='github版本库使用详细教程(命令行及图形界面版)'>github版本库使用详细教程(命令行及图形界面版)</a></li>
+	<li><a href='http://www.woiweb.net/add-alarms-to-digital-clock.html' title='向数字时钟添加闹铃'>向数字时钟添加闹铃</a></li>
+	<li><a href='http://www.woiweb.net/make-digital-clock-with-jquery-and-css.html' title='如何用jQuery和CSS3制作数字时钟'>如何用jQuery和CSS3制作数字时钟</a></li>
+	<li><a href='http://www.woiweb.net/50-amazing-jquery-plugins-others.html' title='50个令人惊奇的jQuery插件（杂货篇）'>50个令人惊奇的jQuery插件（杂货篇）</a></li>
+	<li><a href='http://www.woiweb.net/50-amazing-jquery-plugins-gallery-and-image-effects.html' title='50个令人惊奇的jQuery插件（画廊及图片特效篇）'>50个令人惊奇的jQuery插件（画廊及图片特效篇）</a></li>
+	<li><a href='http://www.woiweb.net/50-amazing-jquery-plugins-grid-scrollbar-background.html' title='50个令人惊奇的jQuery插件（表格布局、滚动条和背景图篇）'>50个令人惊奇的jQuery插件（表格布局、滚动条和背景图篇）</a></li>
+  </ul>
+		</div>
+		
+		<div class="sidebox">
+			<h2 class="title">热门文章</h2>
+			<ul><li><a href="http://www.woiweb.net/50-amazing-jquery-plugins.html"  title="50个令人惊奇的jQuery插件（对话框和表单篇）">50个令人惊奇的jQuery插件（对话框和表单篇）</a> - 99,509次阅读</li><li><a href="http://www.woiweb.net/jquery-panorama-plugins.html"  title="jQuery3D全景效果展示插件">jQuery3D全景效果展示插件</a> - 70,063次阅读</li><li><a href="http://www.woiweb.net/21-free-video-players-for-your-website-and-blogs.html"  title="21个为您的网站和博客提供的免费视频播放器">21个为您的网站和博客提供的免费视频播放器</a> - 62,727次阅读</li><li><a href="http://www.woiweb.net/unique-404-error-pages-inspiration.html"  title="这样的404页面，你用过吗？">这样的404页面，你用过吗？</a> - 56,059次阅读</li><li><a href="http://www.woiweb.net/top-75-best-design-resources-of-2008.html"  title="75个最佳Web设计资源">75个最佳Web设计资源</a> - 44,983次阅读</li><li><a href="http://www.woiweb.net/github-gitshell-tutorial.html"  title="github版本库使用详细教程(命令行及图形界面版)">github版本库使用详细教程(命令行及图形界面版)</a> - 42,338次阅读</li><li><a href="http://www.woiweb.net/wordpress-ctrl-enter-comment-function.html"  title="给wordpress添加Ctrl+Enter快捷发表评论功能">给wordpress添加Ctrl+Enter快捷发表评论功能</a> - 41,175次阅读</li><li><a href="http://www.woiweb.net/phantomjs-quick-use-tutorials.html"  title="PhantomJS快速入门教程">PhantomJS快速入门教程</a> - 41,046次阅读</li><li><a href="http://www.woiweb.net/10-php-cms.html"  title="10款主流的PHP CMS">10款主流的PHP CMS</a> - 40,001次阅读</li><li><a href="http://www.woiweb.net/20-awesome-windows-7-themes.html"  title="20个漂亮的Windows7主题下载">20个漂亮的Windows7主题下载</a> - 39,301次阅读</li></ul>
+		</div>
+		
+		<div class="sidebox">
+			<h2 class="title">Category</h2>
+			<ul>	<li class="cat-item cat-item-33"><a href="http://www.woiweb.net/category/html_css" title="Html &amp; Css">Html &amp; Css</a> (25)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.woiweb.net/category/jquery" title="JQuery">JQuery</a> (30)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.woiweb.net/category/resource" title="查看 免费资源 下的所有文章">免费资源</a> (47)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.woiweb.net/category/tools" title="查看 前端工具 下的所有文章">前端工具</a> (46)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.woiweb.net/category/view" title="查看 前端观察 下的所有文章">前端观察</a> (40)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.woiweb.net/category/development" title="查看 开发经验 下的所有文章">开发经验</a> (38)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.woiweb.net/category/design" title="查看 设计灵感 下的所有文章">设计灵感</a> (28)
+</li>
+</ul>
+		</div>
+		
+		<div class="sidebox taglist">
+			<h2 class="title">标签</h2>
+			<a href='http://www.woiweb.net/tag/3d' class='tag-link-26' title='4 个话题' style='font-size: 10pt;'>3d</a>
+<a href='http://www.woiweb.net/tag/css' class='tag-link-23' title='14 个话题' style='font-size: 14.5714285714pt;'>css</a>
+<a href='http://www.woiweb.net/tag/css3' class='tag-link-51' title='13 个话题' style='font-size: 14.2857142857pt;'>css3</a>
+<a href='http://www.woiweb.net/tag/development-2' class='tag-link-69' title='5 个话题' style='font-size: 10.7619047619pt;'>development</a>
+<a href='http://www.woiweb.net/tag/flash' class='tag-link-50' title='6 个话题' style='font-size: 11.4285714286pt;'>flash</a>
+<a href='http://www.woiweb.net/tag/html' class='tag-link-22' title='11 个话题' style='font-size: 13.619047619pt;'>html</a>
+<a href='http://www.woiweb.net/tag/html5' class='tag-link-81' title='14 个话题' style='font-size: 14.5714285714pt;'>html5</a>
+<a href='http://www.woiweb.net/tag/icon' class='tag-link-25' title='7 个话题' style='font-size: 11.9047619048pt;'>icon</a>
+<a href='http://www.woiweb.net/tag/java' class='tag-link-18' title='4 个话题' style='font-size: 10pt;'>java</a>
+<a href='http://www.woiweb.net/tag/javascript' class='tag-link-35' title='34 个话题' style='font-size: 18pt;'>javascript</a>
+<a href='http://www.woiweb.net/tag/jquery' class='tag-link-4' title='27 个话题' style='font-size: 17.1428571429pt;'>JQuery</a>
+<a href='http://www.woiweb.net/tag/logo' class='tag-link-39' title='6 个话题' style='font-size: 11.4285714286pt;'>logo</a>
+<a href='http://www.woiweb.net/tag/photoshop' class='tag-link-24' title='7 个话题' style='font-size: 11.9047619048pt;'>photoshop</a>
+<a href='http://www.woiweb.net/tag/plugins' class='tag-link-21' title='13 个话题' style='font-size: 14.2857142857pt;'>plugins</a>
+<a href='http://www.woiweb.net/tag/theme' class='tag-link-27' title='8 个话题' style='font-size: 12.380952381pt;'>theme</a>
+<a href='http://www.woiweb.net/tag/ui' class='tag-link-53' title='5 个话题' style='font-size: 10.7619047619pt;'>ui</a>
+<a href='http://www.woiweb.net/tag/wordpress' class='tag-link-15' title='16 个话题' style='font-size: 15.0476190476pt;'>wordpress</a>
+<a href='http://www.woiweb.net/tag/tools' class='tag-link-8' title='23 个话题' style='font-size: 16.4761904762pt;'>前端工具</a>
+<a href='http://www.woiweb.net/tag/design' class='tag-link-5' title='21 个话题' style='font-size: 16.0952380952pt;'>设计灵感</a>
+<a href='http://www.woiweb.net/tag/%e8%b7%a8%e5%9f%9f' class='tag-link-96' title='5 个话题' style='font-size: 10.7619047619pt;'>跨域</a>		</div>
+		
+		<div class="sidebox">
+			<h2 class="title">最新评论</h2>
+			<ul><li class="rc-navi rc-clearfix"><span class="rc-loading">正在加载...</span></li><li id="rc-comment-temp" class="rc-item rc-comment rc-clearfix"><div class="rc-info"></div><div class="rc-timestamp"></div><div class="rc-excerpt"></div></li><li id="rc-ping-temp" class="rc-item rc-ping rc-clearfix"><span class="rc-label"></span></li></ul>
+		</div>
+		
+		<div class="sidebox">
+			<h2>链接表</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://codante.org">codante</a></li>
+<li><a href="http://www.uedcss.com/" target="_blank">web前端寒风</a></li>
+<li><a href="http://www.css88.com/">WEB前端开发</a></li>
+<li><a href="http://www.js8.in/" title="专注前端开发,分享Javascript/CSS/PHP等Web前端开发技巧" target="_blank">三水清</a></li>
+<li><a href="http://bookshadow.com/" target="_blank">书影博客</a></li>
+<li><a href="http://www.qianduan.net" rel="co-worker">前端观察</a></li>
+<li><a href="http://www.lusongsong.com">卢松松</a></li>
+<li><a href="http://show.blogunion.org">同城博客秀</a></li>
+<li><a href="http://www.aips.me/" target="_blank">周良博客</a></li>
+<li><a href="http://www.endsky.cn">天空的尽头</a></li>
+<li><a href="http://c7sky.com/" title="关注、分享感兴趣的事物！" target="_blank">小影&#039;s Blog</a></li>
+<li><a href="http://www.happinesz.cn/" target="_blank">幸福收藏夹</a></li>
+<li><a href="http://www.woiweb.net">我爱互联网</a></li>
+<li><a href="http://xinyingba.com/" title="新影吧" target="_blank">新影吧</a></li>
+<li><a href="http://www.goocn.com/">未来之城</a></li>
+<li><a href="http://www.gbtags.com" target="_blank">极客标签社区</a></li>
+<li><a href="http://www.yyyweb.com">田园牧歌</a></li>
+<li><a href="http://www.mangguo.org/">芒果网</a></li>
+<li><a href="http://www.04js.cn/" title="零式技术网-千里之行，始于脚下">零式技术网</a></li>
+
+	</ul>
+
+		</div>
+		<div class="clear"></div>
+		
+					<div class="clearfix">
+			<!--<script type="text/javascript">nuffnang_bid = "207b6a552f02d5550b5c46f411a3ea9b";</script> 
+<script type="text/javascript" src="http://synad2.nuffnang.com.cn/lmn.js"></script>-->
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=4146539927" type="text/javascript" charset="utf-8"></script>
+<script>
+WB2.anyWhere(function(W){
+	W.widget.hoverCard({
+		id: "wbcard"	//dom结点ID
+	});
+});
+</script>			</div>
+		
+		</ul>
+</div>		</div>
+	</div>
+<!-- footer -->
+	  <div class="footer">
+	  		<div class="info">
+	  			<div class="tools rt">
+					<h3>工具</h3>
+					<ul>
+												<li><a href="/wp-login.php">登录</a></li>
+						<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress</a></li>
+											</ul>
+				</div>
+				<div class="tools">
+					<h3>文章归档</h3>
+					<ul>	<li><a href='http://www.woiweb.net/2015/04' title='2015 年四月'>2015 年四月</a></li>
+	<li><a href='http://www.woiweb.net/2014/02' title='2014 年二月'>2014 年二月</a></li>
+	<li><a href='http://www.woiweb.net/2013/08' title='2013 年八月'>2013 年八月</a></li>
+	<li><a href='http://www.woiweb.net/2013/07' title='2013 年七月'>2013 年七月</a></li>
+	<li><a href='http://www.woiweb.net/2013/06' title='2013 年六月'>2013 年六月</a></li>
+</ul>
+				</div>
+				<div class="tools">
+					<h3>页面</h3>
+					<ul><li class="page_item page-item-3"><a href="http://www.woiweb.net/about">关于我</a></li>
+<li class="page_item page-item-5"><a href="http://www.woiweb.net/contact">联系我</a></li>
+<li class="page_item page-item-7"><a href="http://www.woiweb.net/copyright">Copyright</a></li>
+</ul>
+				</div>
+				<div class="tools">
+					<div class="search">
+						<form role="search" method="get" id="searchform" action="http://www.woiweb.net/" >
+	<div><label class="screen-reader-text" for="s">搜索：</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="搜索" />
+	</div>
+	</form> 
+					</div>
+					<div class="about">
+											</div>
+	  			</div>
+	  			<div class="tools">
+					<div class="wbcard" id="wbcard" wb_screen_name="woiweb">
+						<a href="http://weibo.com/woiweb" target="_blank" title="woiweb的新浪微博"><img src="http://tp1.sinaimg.cn/1052981072/180/5635129718/1" /></a>
+					</div>
+	  			</div>
+
+			</div>
+			<div class="clear"></div>
+	  		<div class="copyright">
+	  			<div class="alignleft">Copyright © <a href="http://www.woiweb.net">我爱互联网</a></div>
+	  			<div class="alignright">Powered by <a title="Powered by WordPress, state-of-the-art semantic personal publishing platform." href="http://wordpress.org/">WordPress</a>, Supported By <a href="http://www.woiweb.net" title="访问 疯狂小强 的站点" rel="author external">疯狂小强</a>, <a target="_blank" href="/sitemap.html">SiteMap</a> 
+				<script language="JavaScript" src="http://s97.cnzz.com/stat.php?id=1991828&web_id=1991828&show=pic"></script> </div>
+			</div>
+	  </div>
+	  <script>
+/* <![CDATA[ */
+var rcGlobal = {
+	serverUrl		:'http://www.woiweb.net',
+	infoTemp		:'%REVIEWER% 在 %POST%',
+	loadingText		:'正在加载',
+	noCommentsText	:'没有任何评论',
+	newestText		:'&laquo; 最新的',
+	newerText		:'&laquo; 上一页',
+	olderText		:'下一页 &raquo;',
+	showContent		:'',
+	external		:'1',
+	avatarSize		:'40',
+	avatarPosition	:'left',
+	anonymous		:'匿名'
+};
+/* ]]> */
+</script>
+
+<p style="margin:0;padding:0;height:1px;overflow:hidden;">
+    <script type="text/javascript"><!--
+        var wumiiSitePrefix = "http://www.woiweb.net";
+        var wumiiEnableCustomPos = false;
+        var wumiiParams = "&num=6&mode=3&displayInFeed=1&version=1.0.5.5&pf=WordPress3.4.1";
+    //--></script><script type="text/javascript" src="http://widget.wumii.com/ext/relatedItemsWidget.htm"></script><a href="http://www.wumii.com/widget/relatedItems.htm" style="border:0;"><img src="http://static.wumii.com/images/pixel.png" alt="无觅相关文章插件，快速提升流量" style="border:0;padding:0;margin:0;" /></a>
+</p><script type='text/javascript' src='/wp-content/plugins/wp-recentcomments/js/wp-recentcomments.js?ver=2.2.7'></script>
+<script type="text/javascript" src="http://www.weibojs.com/js/highlight/syntaxHighlighter.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.weibojs.com/css/highlight/shStyle.css" />
+<script type='text/javascript'>
+	SyntaxHighlighter.all();
+</script>
+	</body>
+</html>
